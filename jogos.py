@@ -18,3 +18,4 @@ def escolha_jogo():
         adivinhacao.jogar()
 
 if (__name__ == "__main__"):
+    escolha_jogo()
