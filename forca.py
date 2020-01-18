@@ -1,10 +1,26 @@
 
+import random
+
 def jogar():
     print("*********************************")
     print("***Bem vindo ao jogo de Forca!***")
     print("*********************************")
 
-    palavra_secreta = "banana".upper()
+    palavras = []
+
+    # arquivo = open("palavras.txt", "r")
+
+    # arquivo.close()
+
+    with open("palavras.txt") as arquivo: #Com a sintexe especial with ja se fechamento de arquivos automatico
+        for linha in arquivo:
+            linha = linha.strip()
+            palavras.append(linha)
+
+
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].upper()
+
     letras_acertadas = ["_" for letra in palavra_secreta]#List Comprehensions
 
     enforcou = False
@@ -16,7 +32,7 @@ def jogar():
     while(not acertou and not enforcou):
 
         chute = input("Qual letra?")
-        chute = chute.strip().upper() #strip() é uma função do python que remove espaços das variveis
+        chute = chute.strip().upper() #strip() é uma função do python que remove caracteres especiais
         
         if(chute in palavra_secreta):
             index = 0
