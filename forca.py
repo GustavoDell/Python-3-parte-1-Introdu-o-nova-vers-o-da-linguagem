@@ -5,7 +5,7 @@ def jogar():
     print("*********************************")
 
     palavra_secreta = "banana".upper()
-    letras_acertadas = ["_", "_", "_", "_", "_", "_"]
+    letras_acertadas = ["_" for letra in palavra_secreta]#List Comprehensions
 
     enforcou = False
     acertou = False
@@ -20,7 +20,6 @@ def jogar():
         
         if(chute in palavra_secreta):
             index = 0
-        
             for letra in palavra_secreta:
                 if(chute == letra):
                     letras_acertadas[index] = letra
@@ -35,8 +34,10 @@ def jogar():
         
         print(letras_acertadas) 
         
-        if(erros == 6 or "_" not in letras_acertadas):
+        if(erros == 6):
             enforcou = True
+            break
+        elif ("_" not in letras_acertadas):
             acertou = True
             break
 
